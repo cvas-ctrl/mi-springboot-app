@@ -1,10 +1,10 @@
 package com.example.gimnasio;
 
-import modelos.Socio;
+import com.example.gimnasio.modelos.Socio;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import repositorios.ISocioRepository;
+import com.example.gimnasio.repositorios.ISocioRepository;
 
 import java.util.List;
 

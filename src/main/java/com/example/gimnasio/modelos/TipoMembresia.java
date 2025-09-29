@@ -1,4 +1,4 @@
-package modelos;
+package com.example.gimnasio.modelos;
 
 
 import jakarta.persistence.*;
