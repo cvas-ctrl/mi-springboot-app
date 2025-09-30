@@ -1,5 +1,5 @@
 package com.example.gimnasio.modelos;
 
-public enum Nombre {
+public enum NombreDuracion {
     SEMANAL, TRIMESTRAL, ANUAL
 }

@@ -1,6 +1,10 @@
 package com.example.gimnasio.modelos;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.HashSet;
+import java.util.Set;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -28,5 +32,10 @@ public class Socio {
     @Column(name = "correo")
     private String correo;
 
+    //Un socio puede tener varias membresías(navegar entre entidades como objetos Java)
+    @OneToMany(mappedBy = "socio", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Membresia> membresias = new HashSet<>(0);
 
+    @OneToMany(mappedBy = "socio", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Asistencia> asistencias = new HashSet<>(0);
 }

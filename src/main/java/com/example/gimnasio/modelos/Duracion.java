@@ -22,6 +22,6 @@ public class Duracion{
 
     @Column(name = "nombre")
     @Enumerated(EnumType.ORDINAL)
-    private Nombre nombre;
+    private NombreDuracion nombre;
 
 }

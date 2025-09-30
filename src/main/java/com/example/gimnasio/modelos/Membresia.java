@@ -30,16 +30,15 @@ public class Membresia {
     private LocalDate fechaFin;
 
 
-    @Column(name = "estado", length = 20)
+    @Column(name = "estado")
     private String estado;
 
-
+    //Aquí, cada membresía tiene un socio asociado.
     @ManyToOne
-    @JoinColumn(name = "id_socio", referencedColumnName = "id")
+    @JoinColumn(name = "id_socio")
     private Socio socio;
 
-
     @ManyToOne
-    @JoinColumn(name = "id_tipo", referencedColumnName = "id")
+    @JoinColumn(name = "id_tipo_membresia")
     private TipoMembresia tipoMembresia;
 }

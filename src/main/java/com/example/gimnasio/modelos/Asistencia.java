@@ -21,7 +21,7 @@ public class Asistencia {
     @Column(name = "id")
     private Integer id;
 
-
+    //mapear un atributo de Java con una columna en la base de datos.
     @Column(name = "fecha")
     private LocalDate fecha;
 
@@ -31,6 +31,6 @@ public class Asistencia {
 
 
     @ManyToOne
-    @JoinColumn(name = "id_socio", referencedColumnName = "id")
+    @JoinColumn(name = "id_socio")
     private Socio socio;
 }

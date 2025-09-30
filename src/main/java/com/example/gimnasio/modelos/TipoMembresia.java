@@ -24,6 +24,7 @@ public class TipoMembresia {
     private Double precio;
 
     @ManyToOne
-    @JoinColumn(name = "id_duracion", referencedColumnName = "id")
+    @JoinColumn(name = "id_duracion")
     private Duracion duracion;
+
 }
