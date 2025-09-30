@@ -32,9 +32,14 @@ public class Socio {
     @Column(name = "correo")
     private String correo;
 
-    //Un socio puede tener varias membresías(navegar entre entidades como objetos Java)
-    @OneToMany(mappedBy = "socio", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Membresia> membresias = new HashSet<>(0);
+    @ManyToMany
+    @JoinTable(
+            name = "socio_membresia",
+            joinColumns = @JoinColumn(name = "id_socio"),
+            inverseJoinColumns = @JoinColumn(name = "id_membresia")
+    )
+    private Set<Membresia> membresias = new HashSet<>();
+
 
     @OneToMany(mappedBy = "socio", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Asistencia> asistencias = new HashSet<>(0);

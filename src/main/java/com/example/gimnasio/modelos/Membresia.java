@@ -1,6 +1,7 @@
 package com.example.gimnasio.modelos;
 
-
+import java.util.HashSet;
+import java.util.Set;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDate;
@@ -33,10 +34,8 @@ public class Membresia {
     @Column(name = "estado")
     private String estado;
 
-    //Aquí, cada membresía tiene un socio asociado.
-    @ManyToOne
-    @JoinColumn(name = "id_socio")
-    private Socio socio;
+    @ManyToMany(mappedBy = "membresias")
+    private Set<Socio> socios = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "id_tipo_membresia")

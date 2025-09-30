@@ -1,6 +1,7 @@
 package com.example.gimnasio.modelos;
 
 
+import com.example.gimnasio.enumerados.NombreDuracion;
 import jakarta.persistence.*;
 import lombok.*;
 

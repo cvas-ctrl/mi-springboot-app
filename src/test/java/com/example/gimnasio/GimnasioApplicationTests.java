@@ -28,9 +28,9 @@ class GimnasioApplicationTests {
     void crearSocioTest() {
         System.out.println("--- CREANDO UN NUEVO SOCIO ---");
         Socio nuevoSocio = new Socio();
-        nuevoSocio.setNombre("Carla Rodriguez AAAA");
+        nuevoSocio.setNombre("Chino");
         nuevoSocio.setTelefono("611223344");
-        nuevoSocio.setCorreo("carla.r@example.com");
+        nuevoSocio.setCorreo("chino@safa.com");
 
         socioRepository.save(nuevoSocio);
         System.out.println("Socio '" + nuevoSocio.getNombre() + "' guardado con éxito.");
@@ -42,7 +42,7 @@ class GimnasioApplicationTests {
         Socio socio = socioRepository.findById(1).orElse(null);
 
         if (socio != null) {
-            socio.setCorreo("nuevo.correo@example.com");
+            socio.setCorreo("nu.correo@example.com");
             socioRepository.save(socio);
             System.out.println("Correo del socio actualizado con éxito.");
         }
