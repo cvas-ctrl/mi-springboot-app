@@ -2,11 +2,17 @@ package com.example.gimnasio.servicios;
 
 import com.example.gimnasio.dto.MembresiaCrearDTO;
 import com.example.gimnasio.modelos.Membresia;
+import com.example.gimnasio.modelos.Socio;
+import com.example.gimnasio.modelos.TipoMembresia;
 import com.example.gimnasio.repositorios.IMembresiaRepository;
+import com.example.gimnasio.repositorios.ISocioRepository;
+import com.example.gimnasio.repositorios.ITipoMembresiaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @AllArgsConstructor
@@ -14,11 +20,14 @@ import java.util.List;
 
 public class MembresiaService {
 
-    private IMembresiaRepository repository;
+    private IMembresiaRepository repository; //me da acceso a la tabla `membresia`(instancia)
+
+    private ITipoMembresiaRepository tipoMembresiaRepository;
+
+    private ISocioRepository socioRepository;
 
 
-
-    public List<Membresia> buscarTodos(){
+    public List<Membresia> buscarTodas(){
         return repository.findAll();
     }
 
@@ -27,13 +36,51 @@ public class MembresiaService {
         return membresia;
     }
 
-    public void crearMembresia(MembresiaCrearDTO dto){
+    public void crearMembresia(MembresiaCrearDTO dto) {
+        Membresia nueva = new Membresia();
+        nueva.setFechaInicio(dto.getFechaInicio());
+        nueva.setFechaFin(dto.getFechaFin());
+        nueva.setEstado(dto.getEstado());
 
-        Membresia membresiaNueva = new Membresia();
-        //membresiaNueva.setFechaInicio(dto.getFechaInicio());
+        TipoMembresia tipo = tipoMembresiaRepository.findById(dto.getIdTipoMembresia()).orElse(null);
+        nueva.setTipoMembresia(tipo);
 
+        Set<Socio> socios = new HashSet<>(socioRepository.findAllById(dto.getIdsSocios()));
+        nueva.setSocios(socios);
 
+        repository.save(nueva);
+    }
+
+    public void editarMembresia(Integer id, MembresiaCrearDTO dto) {
+        Membresia membresiaNueva = repository.findById(id).orElse(null);
+        if (membresiaNueva != null) {
+            membresiaNueva.setFechaInicio(dto.getFechaInicio());
+            membresiaNueva.setFechaFin(dto.getFechaFin());
+            membresiaNueva.setEstado(dto.getEstado());
+
+            TipoMembresia tipo = tipoMembresiaRepository.findById(dto.getIdTipoMembresia()).orElse(null);
+            membresiaNueva.setTipoMembresia(tipo);
+
+            Set<Socio> socios = new HashSet<>(socioRepository.findAllById(dto.getIdsSocios()));
+            membresiaNueva.setSocios(socios);
+
+            repository.save(membresiaNueva);
+        }
+    }
+
+    public void eliminarPorId(Integer id) {
+        repository.deleteById(id);
     }
 
 }
+
+//    public void crearMembresia(MembresiaCrearDTO dto){
+//
+//        Membresia membresiaNueva = new Membresia();
+//        //membresiaNueva.setFechaInicio(dto.getFechaInicio());
+//
+//
+//    }
+
+//}
 

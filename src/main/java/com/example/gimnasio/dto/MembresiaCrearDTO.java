@@ -1,12 +1,14 @@
 package com.example.gimnasio.dto;
 
-import java.util.Date;
+import lombok.Data;
+import java.time.LocalDate;
+import java.util.Set;
 
+@Data
 public class MembresiaCrearDTO {
-
-    private Date fecha_inicial;
-    private Date fecha_final;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFin;
     private String estado;
-    private Integer id_tipo_membresia;
-
+    private Integer idTipoMembresia;
+    private Set<Integer> idsSocios;
 }

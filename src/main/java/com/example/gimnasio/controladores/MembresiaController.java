@@ -1,4 +1,4 @@
-package controladores;
+package com.example.gimnasio.controladores;
 
 import com.example.gimnasio.dto.MembresiaCrearDTO;
 import com.example.gimnasio.modelos.Membresia;
@@ -18,8 +18,8 @@ public class MembresiaController {
     MembresiaService service;
 
     @GetMapping("/all")
-    public List<Membresia> obtenerTodasMembresias(){
-        return service.buscarTodos();
+    public List<Membresia> obtenerTodas(){
+        return service.buscarTodas();
     }
 
     @GetMapping("/{id}")
@@ -27,19 +27,19 @@ public class MembresiaController {
         return service.buscarPorId(id);
     }
 
-    @PostMapping("/{crear}")
+    @PostMapping("/crear")
     public void crearMembresia(@RequestBody MembresiaCrearDTO dto){
         service.crearMembresia(dto);
     }
 
-//    @PutMapping("/{editar/id}")
-//    public void editarMembresia(@PathVariable Integer id,@RequestBody MembresiaEditarDTO dto){
-//        service.editarMembresia(id,dto);
-//    }
+    @PutMapping("/editar/{id}")
+    public void editar(@PathVariable Integer id, @RequestBody MembresiaCrearDTO dto) {
+        service.editarMembresia(id, dto);
+    }
 
-//    @DeleteMapping("/{eliminar}")
-//    public void eliminarMembresia(@RequestBody MembresiaEliminarDTO dto){
-//        service.eliminarMembresia(dto);
-//    }
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable Integer id) {
+        service.eliminarPorId(id);
+    }
 
 }
