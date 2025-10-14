@@ -6,6 +6,7 @@ import java.util.Set;
 
 @Data
 public class MembresiaCrearDTO {
+    private String nombre;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private String estado;
