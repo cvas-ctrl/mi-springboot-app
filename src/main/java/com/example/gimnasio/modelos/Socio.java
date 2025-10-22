@@ -32,14 +32,8 @@ public class Socio {
     @Column(name = "correo")
     private String correo;
 
-    @ManyToMany
-    @JoinTable(
-            name = "socio_membresia",
-            joinColumns = @JoinColumn(name = "id_socio"),
-            inverseJoinColumns = @JoinColumn(name = "id_membresia")
-    )
+    @OneToMany(mappedBy = "socio", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Membresia> membresias = new HashSet<>();
-
 
     @OneToMany(mappedBy = "socio", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Asistencia> asistencias = new HashSet<>(0);

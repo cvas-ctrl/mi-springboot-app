@@ -36,8 +36,9 @@ public class Membresia {
     @Column(name = "estado")
     private String estado;
 
-    @ManyToMany(mappedBy = "membresias")
-    private Set<Socio> socios = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "id_socio")
+    private Socio socio;
 
     @ManyToOne
     @JoinColumn(name = "id_tipo_membresia")

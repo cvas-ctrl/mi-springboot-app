@@ -11,5 +11,5 @@ public class MembresiaCrearDTO {
     private LocalDate fechaFin;
     private String estado;
     private Integer idTipoMembresia;
-    private Set<Integer> idsSocios;
+    private Integer idSocio;
 }

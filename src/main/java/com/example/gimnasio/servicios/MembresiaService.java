@@ -45,8 +45,8 @@ public class MembresiaService {
         TipoMembresia tipo = tipoMembresiaRepository.findById(dto.getIdTipoMembresia()).orElse(null);
         nueva.setTipoMembresia(tipo);
 
-        Set<Socio> socios = new HashSet<>(socioRepository.findAllById(dto.getIdsSocios()));
-        nueva.setSocios(socios);
+        Socio socio = socioRepository.findById(dto.getIdSocio()).orElse(null);
+        nueva.setSocio(socio);
 
         repository.save(nueva);
     }
@@ -61,8 +61,9 @@ public class MembresiaService {
             TipoMembresia tipo = tipoMembresiaRepository.findById(dto.getIdTipoMembresia()).orElse(null);
             membresiaNueva.setTipoMembresia(tipo);
 
-            Set<Socio> socios = new HashSet<>(socioRepository.findAllById(dto.getIdsSocios()));
-            membresiaNueva.setSocios(socios);
+            Socio socio = socioRepository.findById(dto.getIdSocio()).orElse(null);
+            membresiaNueva.setSocio(socio);
+
 
             repository.save(membresiaNueva);
         }
@@ -73,14 +74,4 @@ public class MembresiaService {
     }
 
 }
-
-//    public void crearMembresia(MembresiaCrearDTO dto){
-//
-//        Membresia membresiaNueva = new Membresia();
-//        //membresiaNueva.setFechaInicio(dto.getFechaInicio());
-//
-//
-//    }
-
-//}
 
